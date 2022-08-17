@@ -14,6 +14,10 @@ module.exports = {
         onUpdate: 'CASCADE',
         type: Sequelize.INTEGER,
         foreignKey: true,
+        refereces: {
+          model: 'teams',
+          key: 'id'
+        }
       },
       home_team_goals: {
         type: Sequelize.INTEGER
@@ -23,6 +27,10 @@ module.exports = {
         onUpdate: 'CASCADE',
         type: Sequelize.INTEGER,
         foreignKey: true,
+        refereces: {
+          model: 'teams',
+          key: 'id'
+        }
       },
       away_team_goals: {
         type: Sequelize.INTEGER
