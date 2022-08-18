@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcryptjs';
-import { StatusCodes } from 'http-status-codes';
+// import { StatusCodes } from 'http-status-codes';
 import CustomError from '../middlewares/CustomError';
 
 export default class PasswordHandler {
@@ -13,7 +13,7 @@ export default class PasswordHandler {
   static passwordCompare(password: string, passwordDb: string) {
     const isValid = bcrypt.compareSync(password, passwordDb);
     if (!isValid) {
-      throw new CustomError(StatusCodes.UNAUTHORIZED, 'Invalid password');
+      throw new CustomError(401, 'Invalid password');
     }
     return isValid;
   }
