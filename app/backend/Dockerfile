@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-run npx tsc
+RUN npx tsc
 
 EXPOSE 3001
 
