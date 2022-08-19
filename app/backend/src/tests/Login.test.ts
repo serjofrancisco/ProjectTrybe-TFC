@@ -20,6 +20,10 @@ describe('Teste do login', () => {
     email: 'email@email.com',
     password: '123456',
   }
+
+  afterEach(() => {
+    sinon.restore();
+  })
   it('Deve retornar um token', async () => {
     sinon.stub(Users, 'findOne').resolves(loginMock as Users)
     sinon.stub(JWTService, 'sign').returns('token')
