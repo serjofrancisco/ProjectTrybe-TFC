@@ -1,6 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import ILogin from '../interfaces/ILogin';
+import CustomError from '../middlewares/CustomError';
 
 export default class JwtService {
   static sign(payload: ILogin): string {
@@ -8,7 +9,12 @@ export default class JwtService {
   }
 
   static decode(token: string) {
-    const data = jwt.verify(token, process.env.JWT_SECRET || 'MinhaSenha');
-    return data as ILogin;
+    try {
+      if (!token) throw new CustomError(401, 'Token not found');
+      const data = jwt.verify(token, process.env.JWT_SECRET || 'MinhaSenha');
+      return data as ILogin;
+    } catch (_err) {
+      throw new CustomError(401, 'Token must be a valid token');
+    }
   }
 }
