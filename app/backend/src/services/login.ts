@@ -15,4 +15,11 @@ export default class LoginService {
     const token = JwtService.sign(payload);
     return token;
   }
+
+  static async verify(token: string | undefined) {
+    if (!token) throw new CustomError(401, 'Unauthorized');
+    const payload = JwtService.decode(token);
+    const user = await Users.findOne({ where: { email: payload.email } }) as Users;
+    return { role: user.role };
+  }
 }

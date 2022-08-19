@@ -8,4 +8,10 @@ export default class LoginController {
     const token = await LoginService.sign({ email, password });
     return res.status(StatusCodes.OK).json({ token });
   }
+
+  static async verify(req: Request, res: Response) {
+    const token = req.headers.authorization;
+    const role = await LoginService.verify(token);
+    return res.status(StatusCodes.OK).json(role);
+  }
 }
