@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 import { NextFunction, Request, Response } from 'express';
-// import { StatusCodes } from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import CustomError from './CustomError';
 
 const blankField = 'All fields must be filled';
@@ -20,7 +20,7 @@ export default class LoginValidator {
     });
     const { error } = loginSchema.validate(req.body);
     if (error) {
-      throw new CustomError(400, error.message);
+      throw new CustomError(StatusCodes.BAD_REQUEST, error.message);
     }
 
     return next();
