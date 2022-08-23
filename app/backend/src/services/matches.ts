@@ -28,4 +28,16 @@ export default class MatchesService {
 
     return Matches.create(match);
   }
+
+  static async finishMatch(id: string) {
+    const match = await Matches.findOne({ where: { id } });
+
+    if (!match) {
+      throw new CustomError(401, 'There is no match with such id!');
+    }
+
+    Matches.update({ inProgress: false }, { where: { id } });
+
+    return 'Finished';
+  }
 }

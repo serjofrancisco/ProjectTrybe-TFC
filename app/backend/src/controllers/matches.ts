@@ -12,4 +12,9 @@ export default class MatchesController {
     const match = await MatchesService.create(req.body);
     return res.status(StatusCodes.OK).json(match);
   }
+
+  static async finishMatch(req: Request, res: Response) {
+    const match = await MatchesService.finishMatch(req.params.id);
+    return res.status(StatusCodes.OK).json({ message: match });
+  }
 }
