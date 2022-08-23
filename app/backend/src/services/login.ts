@@ -18,7 +18,7 @@ export default class LoginService {
 
   static async verify(token: string | undefined) {
     if (!token) throw new CustomError(401, 'Unauthorized');
-    const payload = JwtService.decode(token);
+    const payload = JwtService.decode(token) as ILogin;
     const user = await Users.findOne({ where: { email: payload.email } }) as Users;
     return { role: user.role };
   }

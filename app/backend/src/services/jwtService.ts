@@ -8,11 +8,11 @@ export default class JwtService {
     return jwt.sign(payload, process.env.JWT_SECRET || 'MinhaSenha', { expiresIn: '30d' });
   }
 
-  static decode(token: string) {
+  static decode(token: string | undefined) {
     try {
       if (!token) throw new CustomError(401, 'Token not found');
       const data = jwt.verify(token, process.env.JWT_SECRET || 'MinhaSenha');
-      return data as ILogin;
+      return data;
     } catch (_err) {
       throw new CustomError(401, 'Token must be a valid token');
     }
