@@ -19,6 +19,10 @@ export default class MatchesService {
     const awayTeam = await Teams.findOne({ where: { id: match.awayTeam } });
 
     if (!homeTeam || !awayTeam) {
+      throw new CustomError(401, 'There is no team with such id!');
+    }
+
+    if (match.homeTeam === match.awayTeam) {
       throw new CustomError(401, 'It is not possible to create a match with two equal teams');
     }
 

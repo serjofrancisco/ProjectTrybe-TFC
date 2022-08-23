@@ -1,6 +1,6 @@
 export default interface IMatch {
-  homeTeam: string;
-  awayTeam: string;
+  homeTeam: number;
+  awayTeam: number;
   homeTeamGoals: number;
   awayTeamGoals: number;
 }
