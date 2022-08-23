@@ -38,7 +38,7 @@ export default class MatchesService {
     const match = await Matches.findOne({ where: { id } });
 
     if (!match) {
-      throw new CustomError(StatusCodes.UNAUTHORIZED, 'There is no match with such id!');
+      throw new CustomError(StatusCodes.NOT_FOUND, 'There is no match with such id!');
     }
 
     Matches.update({ inProgress: false }, { where: { id } });

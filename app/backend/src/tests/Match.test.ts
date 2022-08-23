@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Teste do Match', () => {
+describe('Teste do Get Match', () => {
     const MatchMock = [
         {
           id: 1,
