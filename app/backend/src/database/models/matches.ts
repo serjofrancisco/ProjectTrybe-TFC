@@ -40,7 +40,7 @@ Matches.init(
       type: DataTypes.INTEGER,
     },
     inProgress: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BOOLEAN,
     },
   },
   {
