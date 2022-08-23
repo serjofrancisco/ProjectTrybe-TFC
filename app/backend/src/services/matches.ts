@@ -21,7 +21,7 @@ export default class MatchesService {
     const awayTeam = await Teams.findOne({ where: { id: match.awayTeam } });
 
     if (!homeTeam || !awayTeam) {
-      throw new CustomError(StatusCodes.UNAUTHORIZED, 'There is no team with such id!');
+      throw new CustomError(StatusCodes.NOT_FOUND, 'There is no team with such id!');
     }
 
     if (match.homeTeam === match.awayTeam) {
