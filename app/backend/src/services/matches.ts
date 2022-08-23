@@ -47,6 +47,9 @@ export default class MatchesService {
   }
 
   static async updateMatch(id: string, match: IUpdateMatch) {
-    return Matches.update(match, { where: { id } });
+    return Matches.update({
+      homeTeamGoals: match.homeTeamGoals,
+      awayTeamGoals: match.awayTeamGoals,
+    }, { where: { id } });
   }
 }
