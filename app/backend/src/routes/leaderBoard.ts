@@ -3,6 +3,6 @@ import LeaderBoardController from '../controllers/leaderBoard';
 
 const leaderBoardRouter = Router();
 
-leaderBoardRouter.get('/', LeaderBoardController.getLeaderBoard);
+leaderBoardRouter.get('/home', LeaderBoardController.getLeaderBoard);
 
 export default leaderBoardRouter;
