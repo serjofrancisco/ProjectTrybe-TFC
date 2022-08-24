@@ -4,5 +4,6 @@ import LeaderBoardController from '../controllers/leaderBoard';
 const leaderBoardRouter = Router();
 
 leaderBoardRouter.get('/home', LeaderBoardController.getLeaderBoard);
+leaderBoardRouter.get('/away', LeaderBoardController.getAwayLeaderBoard);
 
 export default leaderBoardRouter;
