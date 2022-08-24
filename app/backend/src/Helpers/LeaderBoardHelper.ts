@@ -49,7 +49,7 @@ export default class LeaderBoardHelper {
   };
 
   static getGoalsBalance = (match: ILeaderBoardMatch[]) => {
-    const goalsBalance = LeaderBoardHelper.getGoals(match) - LeaderBoardHelper.getGoalsFavor(match);
+    const goalsBalance = LeaderBoardHelper.getGoalsFavor(match) - LeaderBoardHelper.getGoals(match);
     return goalsBalance;
   };
 
