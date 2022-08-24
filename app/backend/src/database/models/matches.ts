@@ -40,7 +40,7 @@ Matches.init(
       type: DataTypes.INTEGER,
     },
     inProgress: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
     },
   },
   {
@@ -54,7 +54,7 @@ Matches.belongsTo(Teams, { foreignKey: 'homeTeam', as: 'teamHome' });
 
 Matches.belongsTo(Teams, { foreignKey: 'awayTeam', as: 'teamAway' });
 
-Teams.hasMany(Matches, { foreignKey: 'homeTeam', as: 'teamHome' });
+Teams.hasMany(Matches, { foreignKey: 'homeTeam', as: 'homeMatches' });
 
 Teams.hasMany(Matches, { foreignKey: 'awayTeam', as: 'teamAway' });
 
