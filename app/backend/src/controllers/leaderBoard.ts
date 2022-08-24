@@ -12,4 +12,9 @@ export default class LeaderBoardController {
     const teams = await LeaderBoardService.getAwayLeaderBoard();
     res.status(StatusCodes.OK).json(teams);
   }
+
+  static async getLeaderBoardGeneral(_req: Request, res: Response) {
+    const teams = await LeaderBoardService.getLeaderBoardGeneral();
+    res.status(StatusCodes.OK).json(teams);
+  }
 }

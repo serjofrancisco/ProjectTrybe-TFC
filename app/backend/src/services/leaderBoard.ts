@@ -5,6 +5,8 @@ import IHomeTeam from '../interfaces/IHomeTeam';
 import IAwayTeam from '../interfaces/IAwayTeam';
 // import ILeaderBoardMatch from '../interfaces/ILeaderBoardMatch';
 import AwayLeaderBoard from '../Helpers/AwayLeaderBoard';
+import ITeam from '../interfaces/ITeam';
+import GenerateLeaderBoard from '../Helpers/GenerateLeaderBoard';
 
 export default class LeaderBoardService {
   static async getLeaderBoard() {
@@ -37,5 +39,23 @@ export default class LeaderBoardService {
     });
     const sortedAwayLeaderboard = LeaderBoardHelper.sortLeaderBoard(awayLeaderBoard);
     return sortedAwayLeaderboard;
+  }
+
+  static async getLeaderBoardGeneral() {
+    const teams = await Teams.findAll(({
+      include: [{ model: Matches, as: 'homeMatches', where: { inProgress: false } },
+        { model: Matches, as: 'awayMatches', where: { inProgress: false } }],
+    })) as ITeam[];
+    const leaderBoard = teams.map(({ teamName, homeMatches, awayMatches }) => {
+      const getLeaderBoard = GenerateLeaderBoard.getLeaderBoard(
+        teamName,
+        homeMatches,
+        awayMatches,
+      );
+      return getLeaderBoard;
+    });
+
+    const sortedLeaderboard = LeaderBoardHelper.sortLeaderBoard(leaderBoard);
+    return sortedLeaderboard;
   }
 }
