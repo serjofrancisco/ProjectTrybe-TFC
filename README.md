@@ -54,7 +54,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Mocha](https://mochajs.org/)**
 -   **[Chai](https://www.chaijs.com/)**
 
-> Veja o arquivo  [package.json]()
+> Veja o arquivo  [package.json](https://github.com/serjofrancisco/ProjectTrybe-BlogsApi/blob/main/package.json)
 
 ---
 ## 📝 Licença
